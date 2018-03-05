@@ -8,6 +8,9 @@
             <li itemprop="author" itemscope itemtype="http://schema.org/Person"><?php _e('作者: '); ?><a itemprop="name" href="<?php $this->author->permalink(); ?>" rel="author"><?php $this->author(); ?></a></li>
             <li><?php _e('时间: '); ?><time datetime="<?php $this->date('c'); ?>" itemprop="datePublished"><?php $this->date(); ?></time></li>
             <li><?php _e('分类: '); ?><?php $this->category(','); ?></li>
+			<?php if($this->user->hasLogin()): ?>
+			<li><a itemprop="name" href="<?php echo '/admin/write-post.php?cid='.$this->slug ?>" rel="author" target='_blank'>编辑</a></li>
+			<?php endif; ?>
         </ul>
         <div class="post-content" itemprop="articleBody">
             <?php $this->content(); ?>
